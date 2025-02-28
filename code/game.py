@@ -1,13 +1,24 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import pygame
+
+from code.menu import Menu
 
 class Game:
     def __init__(self):
-        self.window = None
-        self.Attribute4 = None
-        self.Attribute1 = None
-        self.Attribute2 = None
-        self.Attribute3 = None
+        pygame.init()
+        self.window = pygame.display.set_mode(size=(600, 480))
 
     def run(self, ):
-        pass
+        while True:
+            menu = Menu(self.window)
+            menu.run()
+            pass
+
+            # Check for all events
+            #for event in pygame.event.get():
+             ##   if event.type == pygame.QUIT:
+               #     pygame.quit()  # close window
+                #    quit()  # end pygame
+
+            from collections.abc import AsyncGenerator
