@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 import pygame
 
-from code.const import WIN_WIDTH, WIN_HEIGHT
 
+from code.const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
+from code.level import Level
 from code.menu import Menu
 
 class Game:
@@ -12,12 +13,16 @@ class Game:
         self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
 
     def run(self):
-
         while True:
             menu = Menu(self.window)
-            menu.run()
-            pass
+            menu_return = menu.run()
+
+            if menu_return == MENU_OPTION[0]:
+                level = Level(self.window, 'Level1', menu_return)
+            elif menu_return == MENU_OPTION[4]:
+                pygame.quit() # close window
+                quit() # end pygame
+            else:
+                pass
 
 
-
-            from collections.abc import AsyncGenerator
