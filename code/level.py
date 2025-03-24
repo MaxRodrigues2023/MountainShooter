@@ -8,18 +8,15 @@ from pygame import Surface, Rect
 
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
-from code.const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+# import pygame import Surface, Rect
+# import pygame.font import Font
+from code.const import C_WHITE, C_GREEN, C_CYAN, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 from code.enemy import Enemy
 from code.entity import Entity
 from code.player import Player
 
 
 # from pygame import Font
-
-
-# import pygame import Surface, Rect
-# import pygame.font import Font
-
 class Level:
 
     def __init__(self, window, name, game_mode):
@@ -51,6 +48,10 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+                if ent.name == "Player1":
+                    self.level_text(14, f'Player1 - health: {ent.health} | Score: {ent.score}', C_GREEN, (10, 25))
+                if ent.name == "Player2":
+                    self.level_text(14, f'Player2 - health: {ent.health} | Score: {ent.score}', C_CYAN, (10, 45))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -60,10 +61,11 @@ class Level:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
 
+
             # printed text
-            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_WHITE, (10, 5))
-            self.level_text(14, f'fps:{clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', C_WHITE, (10, 5))
+            self.level_text(14, f'fps:{clock.get_fps() :.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
 
             #Collisions
