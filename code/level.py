@@ -8,16 +8,13 @@ from pygame import Surface, Rect
 
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
-# import pygame import Surface, Rect
-# import pygame.font import Font
+
 from code.const import C_WHITE, C_GREEN, C_CYAN, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, EVENT_TIMEOUT, \
     TIMEOUT_STEP, TIMEOUT_LEVEL
 from code.enemy import Enemy
 from code.entity import Entity
 from code.player import Player
 
-
-# from pygame import Font
 class Level:
 
     def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int]):
@@ -65,15 +62,7 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
-                # if event.type == EVENT_TIMEOUT:
-                #     self.timeout -= TIMEOUT_STEP
-                #     if self.timeout == 0:
-                #         for ent in self.entity_list:
-                #             if isinstance(ent, Player) and ent.name == 'player1':
-                #                 player_score[0] = ent.score
-                #             if isinstance(ent, Player) and ent.name == 'player2':
-                #                 player_score[1] = ent.score
-                #         return True
+
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:
@@ -85,13 +74,6 @@ class Level:
                                     player_score[1] = ent.score
                         return True  # Fase concluída por timeout
 
-                # found_player = False
-                # for ent in self.entity_list:
-                #     if isinstance(ent, Player):
-                #         found_player = True
-                #
-                # if not found_player:
-                #     return False
                 found_player = False
                 for ent in self.entity_list:
                     if isinstance(ent, Player):
