@@ -1,9 +1,4 @@
-# from code.PlayerShot import PlayerShot
-# from code.const import WIN_WIDTH
-# from code.enemy import Enemy
-# from code.entity import Entity
-# from code.player import Player
-# from code.EnemyShot import EnemyShot  # Add this at the top of your file
+
 from code.EnemyShot import EnemyShot
 from code.PlayerShot import PlayerShot
 from code.const import WIN_WIDTH, ENTITY_SCORE
